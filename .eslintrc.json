@@ -3,7 +3,6 @@
     "browser": true,
     "es2021": true
   },
-  "ignorePatterns": [".bablrc", ".eslintrc.json", "yarn.lock"],
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
