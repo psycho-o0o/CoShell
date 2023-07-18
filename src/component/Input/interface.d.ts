@@ -24,7 +24,8 @@ export interface IHelperWrapProps {
 export interface IInputProps {
   type?: InputType
   title?: string
-  isVisibleHelperButton: boolean
-  isVisibleShowButton: boolean
+  placeHolder: string
+  isVisibleHelperButton?: boolean
+  isVisibleShowButton?: boolean
   helperText?: string
 }

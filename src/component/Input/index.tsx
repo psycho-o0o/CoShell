@@ -13,6 +13,7 @@ import Image from "next/image"
 export default function Input({
   type,
   title,
+  placeHolder,
   isVisibleHelperButton,
   isVisibleShowButton,
   helperText,
@@ -24,11 +25,14 @@ export default function Input({
       </TitleWrap>
       <InputWrap type={type}>
         <StyledInput
-          placeholder="PlaceHolder"
+          placeholder={placeHolder}
           disabled={type === "disabled"}
         ></StyledInput>
         {(type === "warning" || type === "help") && (
-          <ShowHelperTextButton type={type} isShown={isVisibleHelperButton}>
+          <ShowHelperTextButton
+            type={type}
+            isShown={isVisibleHelperButton !== undefined}
+          >
             <Image
               src={`/images/icons/informationCircle${type}.svg`}
               alt="show Helper Text"
@@ -37,7 +41,10 @@ export default function Input({
             />
           </ShowHelperTextButton>
         )}
-        <ShowVisibleTextButton type={type} isShown={isVisibleShowButton}>
+        <ShowVisibleTextButton
+          type={type}
+          isShown={isVisibleShowButton !== undefined}
+        >
           <Image
             src="/images/icons/eye.svg"
             alt="show Image"
