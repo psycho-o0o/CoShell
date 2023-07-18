@@ -20,7 +20,8 @@ export default function SignLayout({
                         <Image
                             alt="logo Image"
                             src="/images/figure/LogoImage.png"
-                            fill
+                            width={41}
+                            height={41}
                         />
                     </LogoImageWrap>
                     <span className="text">CoShell</span>

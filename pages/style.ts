@@ -25,3 +25,5 @@ export const OrWrap = styled.div`
         background-color: #eaeaea;
     }
 `
+
+export const GuestLinkWrap = styled.div``
