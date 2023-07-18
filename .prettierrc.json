@@ -1,4 +1,5 @@
 {
-  "semi": false,
-  "endOfLine": "lf"
+    "semi": false,
+    "endOfLine": "lf",
+    "tabWidth": 4
 }
