@@ -1,8 +1,15 @@
 import styled from "styled-components"
 
-export const Wrapper = styled.div``
-export const Wrap = styled.div`
+export const Wrapper = styled.div`
+    height: 100%;
     padding: 32px 16px;
+    display: flex;
+    flex-direction: column;
+`
+export const Wrap = styled.div`
+    flex: 1 0 0;
+    height: 100%;
+    position: relative;
 `
 export const Logo = styled.div`
     display: flex;
