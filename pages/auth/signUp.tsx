@@ -1,6 +1,6 @@
 import Link from "next/link"
 import styled from "styled-components"
-import Button from "@/src/component/Button"
+import MoveButton from "@/src/component/MoveButton"
 import Input from "@/src/component/Input"
 import SignLayout from "@/src/component/Layout/Sign"
 import OAuthButton from "@/src/feature/OAuthButton/Container"
@@ -81,7 +81,7 @@ export default function SignUp(): JSX.Element {
                 <span>Terms of Service & Privacy Policy</span>
             </TermsWrap>
             <ButtonWrap>
-                <Button>CREATE ACCOUNT</Button>
+                <MoveButton>CREATE ACCOUNT</MoveButton>
             </ButtonWrap>
             <OrWrap>
                 <span />

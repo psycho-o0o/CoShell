@@ -1,6 +1,6 @@
 import Link from "next/link"
 import styled from "styled-components"
-import Button from "@/src/component/Button"
+import MoveButton from "@/src/component/MoveButton"
 import Input from "@/src/component/Input"
 import SignLayout from "@/src/component/Layout/Sign"
 import OAuthButton from "@/src/feature/OAuthButton/Container"
@@ -61,7 +61,7 @@ export default function SignIn(): JSX.Element {
                 <Input placeHolder="Password" isVisibleShowButton />
             </InputWrap>
             <ButtonWrap>
-                <Button>SignUp</Button>
+                <MoveButton>SignUp</MoveButton>
             </ButtonWrap>
             <OrWrap>
                 <span />

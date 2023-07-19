@@ -1,6 +1,6 @@
 import Link from "next/link"
 import styled from "styled-components"
-import Button from "@/src/component/Button"
+import MoveButton from "@/src/component/MoveButton"
 import Input from "@/src/component/Input"
 import SignLayout from "@/src/component/Layout/Sign"
 
@@ -48,7 +48,7 @@ export default function RecoverPassword(): JSX.Element {
             </InputWrap>
             <BottomWrap>
                 <ButtonWrap>
-                    <Button>SUBMIT</Button>
+                    <MoveButton>SUBMIT</MoveButton>
                 </ButtonWrap>
                 <CreateAccountWrap>
                     <Link href="/signUp">

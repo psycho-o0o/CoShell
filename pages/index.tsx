@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import Image from "next/image"
-import Button from "@/src/component/Button"
+import MoveButton from "@/src/component/MoveButton"
 
 export const Wrapper = styled.div`
     width: 390px;
@@ -64,7 +64,7 @@ export default function Home(): JSX.Element {
                 <LogoTextWrap>CoShell</LogoTextWrap>
                 <VisionWrap>A new way to control your home</VisionWrap>
                 <ButtonWrap>
-                    <Button>GET STARTED</Button>
+                    <MoveButton>GET STARTED</MoveButton>
                 </ButtonWrap>
             </Wrap>
         </Wrapper>

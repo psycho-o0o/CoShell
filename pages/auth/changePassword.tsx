@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import Button from "@/src/component/Button"
+import MoveButton from "@/src/component/MoveButton"
 import Input from "@/src/component/Input"
 import SignLayout from "@/src/component/Layout/Sign"
 
@@ -51,7 +51,7 @@ export default function ChangePassword(): JSX.Element {
             </InputWrap>
             <BottomWrap>
                 <ButtonWrap>
-                    <Button>VERIFY</Button>
+                    <MoveButton>VERIFY</MoveButton>
                 </ButtonWrap>
             </BottomWrap>
         </SignLayout>
