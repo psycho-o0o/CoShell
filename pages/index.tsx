@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import Image from "next/image"
-import MoveButton from "@/src/component/MoveButton"
+import MoveButton from "@/src/component/Button/MoveButton"
 
 export const Wrapper = styled.div`
     width: 390px;

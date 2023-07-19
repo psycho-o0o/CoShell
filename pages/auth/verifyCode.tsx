@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import MoveButton from "@/src/component/MoveButton"
+import MoveButton from "@/src/component/Button/MoveButton"
 import Input from "@/src/component/Input"
 import SignLayout from "@/src/component/Layout/Sign"
 
