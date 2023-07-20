@@ -1,9 +1,9 @@
-import ToggleButton from "@/src/component/Button/ToggleButton"
+import SceneButton from "@/src/component/Button/SceneButton"
 
 export default function DashBoard(): JSX.Element {
     return (
-        <div>
-            <ToggleButton type="on" />
+        <div style={{ display: "flex", flexDirection: "column" }}>
+            <SceneButton isClicked />
         </div>
     )
 }
