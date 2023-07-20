@@ -1,6 +1,6 @@
 export interface ISceneButtonProps {
-    isClicked: boolean
+    isClicked?: boolean
 }
 export interface IWrapperProps {
-    isClicked: boolean
+    isClicked?: boolean
 }

@@ -1,11 +1,11 @@
 export interface IDeviceButtonProps {
     size: "small" | "big"
-    isClicked: boolean
+    isClicked?: boolean
 }
 
 export interface IWrapperProps {
     size: "small" | "big"
-    isClicked: boolean
+    isClicked?: boolean
 }
 
 export interface IWrapProps {
