@@ -7,7 +7,6 @@ import {
 import DashboardLayout from "@/src/component/Layout/Dashboard"
 import DeviceButton from "@/src/component/Button/DeviceButton"
 import SceneButton from "@/src/component/Button/SceneButton"
-import Nav from "@/src/component/Nav"
 
 export default function DashBoard(): JSX.Element {
     return (
@@ -43,7 +42,6 @@ export default function DashBoard(): JSX.Element {
                         <DeviceButton size="big" isClicked />
                     </BigDeviceButtonWrap>
                 </FrequentlyUsedButtonWrap>
-                <Nav />
             </>
         </DashboardLayout>
     )

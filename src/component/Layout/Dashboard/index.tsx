@@ -1,4 +1,5 @@
 import { Wrapper, Wrap, TitleWrap, PlusButtonWrap } from "./style"
+import Nav from "@/src/component/Nav"
 import Image from "next/image"
 export interface IDashboardLayoutProps {
     children: React.ReactElement
@@ -22,6 +23,7 @@ export default function DashboardLayout({
                     </PlusButtonWrap>
                 </TitleWrap>
                 {children}
+                <Nav />
             </Wrap>
         </Wrapper>
     )
