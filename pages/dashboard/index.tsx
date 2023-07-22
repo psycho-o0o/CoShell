@@ -1,31 +1,18 @@
 import {
-    Wrapper,
-    Wrap,
-    TitleWrap,
-    PlusButtonWrap,
     DeviceButtonWrap,
     SceneButtonWrap,
     FrequentlyUsedButtonWrap,
+    BigDeviceButtonWrap,
 } from "./style"
-import Image from "next/image"
+import DashboardLayout from "@/src/component/Layout/Dashboard"
 import DeviceButton from "@/src/component/Button/DeviceButton"
 import SceneButton from "@/src/component/Button/SceneButton"
+import Nav from "@/src/component/Nav"
 
 export default function DashBoard(): JSX.Element {
     return (
-        <Wrapper>
-            <Wrap>
-                <TitleWrap>
-                    <h1>My Home</h1>
-                    <PlusButtonWrap>
-                        <Image
-                            src="/images/icons/plus.svg"
-                            alt="add enviroment"
-                            width={27}
-                            height={27}
-                        />
-                    </PlusButtonWrap>
-                </TitleWrap>
+        <DashboardLayout>
+            <>
                 <DeviceButtonWrap>
                     <DeviceButton size="small" isClicked />
                     <DeviceButton size="small" />
@@ -39,13 +26,25 @@ export default function DashBoard(): JSX.Element {
                 </SceneButtonWrap>
                 <FrequentlyUsedButtonWrap>
                     <h2>Frequently Used</h2>
-                    <DeviceButton size="big" isClicked />
-                    <DeviceButton size="big" isClicked />
-                    <DeviceButton size="big" />
-                    <DeviceButton size="big" />
-                    <DeviceButton size="big" />
+                    <BigDeviceButtonWrap>
+                        <DeviceButton size="big" isClicked />
+                        <DeviceButton size="big" isClicked />
+                        <DeviceButton size="big" isClicked />
+
+                        <DeviceButton size="big" isClicked />
+                        <DeviceButton size="big" isClicked />
+
+                        <DeviceButton size="big" isClicked />
+                        <DeviceButton size="big" isClicked />
+
+                        <DeviceButton size="big" isClicked />
+                        <DeviceButton size="big" isClicked />
+
+                        <DeviceButton size="big" isClicked />
+                    </BigDeviceButtonWrap>
                 </FrequentlyUsedButtonWrap>
-            </Wrap>
-        </Wrapper>
+                <Nav />
+            </>
+        </DashboardLayout>
     )
 }

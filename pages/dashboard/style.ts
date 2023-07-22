@@ -1,15 +1,5 @@
 import styled from "styled-components"
 
-export const Wrapper = styled.div``
-export const Wrap = styled.div`
-    padding: 16px;
-`
-export const TitleWrap = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-`
-export const PlusButtonWrap = styled.div``
 export const DeviceButtonWrap = styled.div`
     display: flex;
     flex-direction: row;
@@ -19,28 +9,26 @@ export const DeviceButtonWrap = styled.div`
     &::-webkit-scrollbar {
         display: none;
     }
-    & > div {
-        margin: 0px 10px;
-    }
-    & > div:first-child,
-    & > div:last-child {
-        margin: 0;
-    }
 `
 export const SceneButtonWrap = styled.div`
+    width: 100%;
     & > div {
         margin-bottom: 12px;
     }
 `
 export const FrequentlyUsedButtonWrap = styled.div`
-    display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
     h2 {
         width: 100%;
     }
+`
+export const BigDeviceButtonWrap = styled.div`
+    max-width: 100vw;
+    display: flex;
+    flex-wrap: wrap;
     & > div {
-        width: 48%;
+        display: flex;
+        flex-basis: 50%;
         margin-bottom: 15px;
     }
 `

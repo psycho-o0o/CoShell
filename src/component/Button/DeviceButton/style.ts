@@ -1,16 +1,21 @@
 import styled, { css } from "styled-components"
-import { IConWrapProps, IWrapProps, IWrapperProps } from "./interface"
+import { IConWrapProps, IWrapProps, IContainerProps } from "./interface"
 
-export const Wrapper = styled.div<IWrapperProps>`
+export const Wrapper = styled.div`
+    padding: 0px 5px;
+    box-sizing: border-box;
+`
+
+export const Wrap = styled.div<IWrapProps>`
     padding: 0px 8px;
     height: 50px;
     min-width: 120px;
-    box-sizing: border-box;
     border-radius: 14px;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: #f7f7f7;
+    box-sizing: border-box;
 
     background-color: ${(props) =>
         props.isClicked && props.size === "small" ? "#34E0A1" : "#f7f7f7"};
@@ -20,10 +25,10 @@ export const Wrapper = styled.div<IWrapperProps>`
             width: 100%;
             padding: 16px;
             height: 116px;
+            box-sizing: border-box;
         `};
 `
-
-export const Wrap = styled.div<IWrapProps>`
+export const Container = styled.div<IContainerProps>`
     display: flex;
 
     ${(props) =>
@@ -39,7 +44,7 @@ export const Wrap = styled.div<IWrapProps>`
                 margin-bottom: 16px;
             }
             & > div:last-child {
-                flex: 1 0 100%;
+                flex: 1 0 0;
                 margin-bottom: 0px;
             }
         `}

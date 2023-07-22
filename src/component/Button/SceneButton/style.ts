@@ -2,6 +2,7 @@ import styled from "styled-components"
 import { IWrapperProps } from "./interface"
 
 export const Wrapper = styled.div<IWrapperProps>`
+    width: 100%;
     padding: 18px 16px;
     box-sizing: border-box;
     border-radius: 14px;
