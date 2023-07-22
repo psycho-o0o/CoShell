@@ -62,6 +62,12 @@ export const ShowButton = styled.div<IShowButtonProps>`
     margin: 0 2px;
     cursor: ${(props) => (props.type === "disabled" ? "default" : "pointer")};
 `
+export const ShowRemoveTextButton = styled(ShowButton)`
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+`
+
 export const ShowHelperTextButton = styled(ShowButton)``
 
 export const ShowVisibleTextButton = styled(ShowButton)``

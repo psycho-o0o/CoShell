@@ -6,6 +6,7 @@ import {
     ShowVisibleTextButton,
     ShowHelperTextButton,
     HelperWrap,
+    ShowRemoveTextButton,
 } from "./style"
 import { IInputProps } from "./interface"
 import Image from "next/image"
@@ -28,6 +29,15 @@ export default function Input({
                     placeholder={placeHolder}
                     disabled={type === "disabled"}
                 ></StyledInput>
+                <ShowRemoveTextButton type={type} isShown={type === "typing"}>
+                    <Image
+                        src={"/images/icons/x2.svg"}
+                        alt="remove inputed text"
+                        width={18}
+                        height={18}
+                    />
+                </ShowRemoveTextButton>
+
                 {(type === "warning" || type === "help") && (
                     <ShowHelperTextButton
                         type={type}
