@@ -43,7 +43,9 @@ export default function DeviceButton({
                     } */}
                     <DeviceWrap>
                         <div className="name">Smart TV</div>
-                        <div className="num">2 Active</div>
+                        {type === "toggle" && (
+                            <div className="num">2 Active</div>
+                        )}
                     </DeviceWrap>
                 </Container>
             </Wrap>
