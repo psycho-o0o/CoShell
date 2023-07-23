@@ -3,6 +3,7 @@ import RoomCard from "@/src/component/Card/RoomCard"
 import PopUp from "@/src/component/PopUp"
 
 import CreateRoom from "@/src/component/PopUp/createRoom"
+import SelectBackground from "@/src/component/PopUp/selectBackground"
 
 import { useRouter } from "next/router"
 import { useState, useCallback, useMemo } from "react"
@@ -17,7 +18,7 @@ export default function RoomPage(): React.ReactElement {
         },
         {
             name: "selectBackground",
-            component: <CreateRoom />,
+            component: <SelectBackground />,
         },
         {
             name: "addDevices",
@@ -54,7 +55,8 @@ export default function RoomPage(): React.ReactElement {
     }, [])
 
     const PopUpContent = useMemo(() => {
-        if (popUpIndex) return <></>
+        if (popUpIndex === -1) return <></>
+        console.log(popUpIndex)
         return popUpComponents[popUpIndex].component
     }, [popUpIndex])
 

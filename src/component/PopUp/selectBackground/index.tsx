@@ -1,0 +1,67 @@
+import { Wrapper, Wrap, ImageWrap, SelectedButton } from "./style"
+import Image from "next/image"
+export default function SelectBackground(): JSX.Element {
+    return (
+        <Wrapper>
+            <Wrap>
+                <ImageWrap>
+                    <SelectedButton>
+                        <Image
+                            src="/images/icons/unChecked.svg"
+                            alt=""
+                            width={24}
+                            height={24}
+                        />
+                    </SelectedButton>
+                    <Image
+                        src="/images/figure/cardBackgroundImage1.png"
+                        alt=""
+                        fill
+                        objectFit="cover"
+                    />
+                </ImageWrap>
+                <ImageWrap>
+                    <Image
+                        src="/images/figure/cardBackgroundImage2.png"
+                        alt=""
+                        fill
+                        objectFit="cover"
+                    />
+                </ImageWrap>
+                <ImageWrap>
+                    <Image
+                        src="/images/figure/cardBackgroundImage3.png"
+                        alt=""
+                        fill
+                        objectFit="cover"
+                    />
+                </ImageWrap>
+                <ImageWrap>
+                    <Image
+                        src="/images/figure/cardBackgroundImage1.png"
+                        alt=""
+                        fill
+                        objectFit="cover"
+                    />
+                    <SelectedButton />
+                </ImageWrap>
+                <ImageWrap>
+                    <Image
+                        src="/images/figure/cardBackgroundImage2.png"
+                        alt=""
+                        fill
+                        objectFit="cover"
+                    />
+                </ImageWrap>
+                <ImageWrap>
+                    <Image
+                        src="/images/figure/cardBackgroundImage3.png"
+                        alt=""
+                        fill
+                        objectFit="cover"
+                    />
+                </ImageWrap>
+            </Wrap>
+        </Wrapper>
+    )
+}
