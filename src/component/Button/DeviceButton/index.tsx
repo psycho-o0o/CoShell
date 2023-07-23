@@ -32,7 +32,7 @@ export default function DeviceButton({
 
                     {size !== "small" && (
                         <ToggleWrap>
-                            <ToggleButton type={isClicked ? "on" : "off"} />
+                            <ToggleButton on={isClicked} />
                         </ToggleWrap>
                     )}
                     <DeviceWrap>

@@ -1,13 +1,11 @@
 import { Wrapper } from "./style"
 
 export interface IToggleButtonProps {
-    type: "on" | "off"
+    on?: boolean
 }
-export default function ToggleButton({
-    type,
-}: IToggleButtonProps): JSX.Element {
+export default function ToggleButton({ on }: IToggleButtonProps): JSX.Element {
     return (
-        <Wrapper type={type}>
+        <Wrapper on={on}>
             <div />
         </Wrapper>
     )
