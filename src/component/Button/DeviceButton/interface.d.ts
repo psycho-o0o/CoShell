@@ -1,5 +1,6 @@
 export interface IDeviceButtonProps {
     size: "small" | "big"
+    type: "toggle" | "radio"
     isClicked?: boolean
 }
 
