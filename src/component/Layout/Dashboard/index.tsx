@@ -2,10 +2,12 @@ import { Wrapper, Wrap, TitleWrap, PlusButtonWrap } from "./style"
 import Nav from "@/src/component/Nav"
 import Image from "next/image"
 export interface IDashboardLayoutProps {
+    onClickCreateButton: () => void
     children: React.ReactElement
 }
 
 export default function DashboardLayout({
+    onClickCreateButton,
     children,
 }: IDashboardLayoutProps): JSX.Element {
     return (
@@ -13,7 +15,7 @@ export default function DashboardLayout({
             <Wrap>
                 <TitleWrap>
                     <h1>My Home</h1>
-                    <PlusButtonWrap>
+                    <PlusButtonWrap onClick={onClickCreateButton}>
                         <Image
                             src="/images/icons/plus.svg"
                             alt="add enviroment"
