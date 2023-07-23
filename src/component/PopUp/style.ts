@@ -12,6 +12,8 @@ export const Wrapper = styled.div`
 export const Wrap = styled.div`
     position: absolute;
     width: 100%;
+    max-height: 60%;
+    overflow-y: scroll;
     bottom: 0;
     border-radius: 24px 24px 0px 0px;
     background-color: white;
