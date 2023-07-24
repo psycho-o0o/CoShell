@@ -1,5 +1,9 @@
 import Input from "@/src/component/Input"
 
 export default function CreateRoom(): JSX.Element {
-    return <Input placeHolder="Room Name" type="typing" />
+    return (
+        <div style={{ marginBottom: "50px" }}>
+            <Input placeHolder="Room Name" type="typing" />
+        </div>
+    )
 }
