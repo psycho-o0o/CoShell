@@ -2,16 +2,18 @@ import { Wrapper, Wrap, TitleWrap, PlusButtonWrap } from "./style"
 import Nav from "@/src/component/Nav"
 import Image from "next/image"
 export interface IDashboardLayoutProps {
+    isBlockedScroll?: boolean
     onClickCreateButton: () => void
     children: React.ReactElement
 }
 
 export default function DashboardLayout({
+    isBlockedScroll,
     onClickCreateButton,
     children,
 }: IDashboardLayoutProps): JSX.Element {
     return (
-        <Wrapper>
+        <Wrapper isBlockedScroll={isBlockedScroll}>
             <Wrap>
                 <TitleWrap>
                     <h1>My Home</h1>

@@ -1,7 +1,15 @@
-import styled from "styled-components"
-
-export const Wrapper = styled.div`
+import styled, { css } from "styled-components"
+export interface IWrapperProps {
+    isBlockedScroll?: boolean
+}
+export const Wrapper = styled.div<IWrapperProps>`
     position: relative;
+    ${(props) =>
+        props.isBlockedScroll &&
+        css`
+            height: 100vh;
+            overflow-y: hidden;
+        `}
 `
 export const Wrap = styled.div`
     width: 100%;
