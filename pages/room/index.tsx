@@ -5,57 +5,64 @@ import PopUp from "@/src/component/PopUp"
 import CreateRoom from "@/src/component/PopUp/createRoom"
 import SelectBackground from "@/src/component/PopUp/selectBackground"
 import AddDevices from "@/src/component/PopUp/addDevices"
+import Success from "@/src/component/PopUp/success"
 
 import { useRouter } from "next/router"
 import { useState, useEffect, useCallback, useMemo, useRef } from "react"
+
+const popUpComponents = [
+    {
+        name: "createRoom",
+        component: <CreateRoom />,
+    },
+    {
+        name: "selectBackground",
+        component: <SelectBackground />,
+    },
+    {
+        name: "addDevices",
+        component: <AddDevices />,
+    },
+    {
+        name: "done",
+        component: <Success />,
+    },
+]
 
 export default function RoomPage(): React.ReactElement {
     const ref = useRef<HTMLDivElement>(null)
     const router = useRouter()
     const [popUpIndex, setPopUpIndex] = useState(-1)
     const [blockScroll, setBlockScroll] = useState(false)
-    const popUpComponents = [
-        {
-            name: "createRoom",
-            component: <CreateRoom />,
-        },
-        {
-            name: "selectBackground",
-            component: <SelectBackground />,
-        },
-        {
-            name: "addDevices",
-            component: <AddDevices />,
-        },
-        {
-            name: "done",
-            component: <CreateRoom />,
-        },
-    ]
 
     const continuePopUpPage = useCallback(() => {
         if (popUpIndex < popUpComponents.length - 1) {
             setPopUpIndex(popUpIndex + 1)
             router.push(`?popUp=${popUpComponents[popUpIndex + 1].name}`)
         }
-    }, [popUpIndex])
+    }, [router, popUpIndex])
 
     const backPopUpPage = useCallback(() => {
         if (-1 < popUpIndex) {
             setPopUpIndex(popUpIndex - 1)
             router.back()
         }
-    }, [popUpIndex])
+    }, [router, popUpIndex])
 
     const onClickCreateButton = useCallback(() => {
         setPopUpIndex(0)
         router.push(`?popUp=${popUpComponents[0].name}`)
-    }, [])
+    }, [router])
 
     const onClickCloseButton = useCallback(() => {
         setPopUpIndex(-1)
         router.push("/room")
-    }, [])
+    }, [router])
+
+    const PopUpClose = useMemo(
+        () => popUpIndex === popUpComponents.length - 1,
+        [popUpIndex],
+    )
 
     const PopUpContent = useMemo(() => {
         if (popUpIndex === -1) return <></>
@@ -82,6 +89,7 @@ export default function RoomPage(): React.ReactElement {
                 {popUpIndex !== -1 && (
                     <PopUp
                         ref={ref}
+                        close={PopUpClose}
                         onClickContinueButton={continuePopUpPage}
                         onClickBackButton={backPopUpPage}
                         onClickCloseButton={onClickCloseButton}

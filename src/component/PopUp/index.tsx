@@ -12,6 +12,7 @@ import {
 import { ForwardedRef, forwardRef } from "react"
 
 export interface IPopUpProps {
+    close?: boolean
     onClickContinueButton: () => void
     onClickBackButton: () => void
     onClickCloseButton: () => void
@@ -19,6 +20,7 @@ export interface IPopUpProps {
 }
 export default forwardRef(function PopUp(
     {
+        close,
         onClickContinueButton,
         onClickBackButton,
         onClickCloseButton,
@@ -43,20 +45,26 @@ export default forwardRef(function PopUp(
                     <ButtonWrapper>
                         <ButtonWrap>
                             <MoveButton
-                                onClick={onClickContinueButton}
+                                onClick={
+                                    close
+                                        ? onClickCloseButton
+                                        : onClickContinueButton
+                                }
                                 backgroundColor="green"
                             >
-                                Continue
+                                {close ? "Done" : "Continue"}
                             </MoveButton>
                         </ButtonWrap>
-                        <ButtonWrap>
-                            <MoveButton
-                                onClick={onClickBackButton}
-                                backgroundColor="white"
-                            >
-                                Back
-                            </MoveButton>
-                        </ButtonWrap>
+                        {!close && (
+                            <ButtonWrap>
+                                <MoveButton
+                                    onClick={onClickBackButton}
+                                    backgroundColor="white"
+                                >
+                                    Back
+                                </MoveButton>
+                            </ButtonWrap>
+                        )}
                     </ButtonWrapper>
                 </Container>
             </Wrap>
