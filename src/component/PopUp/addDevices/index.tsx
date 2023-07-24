@@ -1,0 +1,60 @@
+import { Wrapper, Wrap, DeviceButtonWrap } from "./style"
+import DeviceButton from "@/src/component/Button/DeviceButton"
+
+export default function AddDevices(): JSX.Element {
+    return (
+        <Wrapper>
+            <Wrap>
+                <DeviceButtonWrap>
+                    <DeviceButton
+                        size="big"
+                        type="radio"
+                        isClicked
+                    ></DeviceButton>
+                </DeviceButtonWrap>
+                <DeviceButtonWrap>
+                    <DeviceButton
+                        size="big"
+                        type="radio"
+                        isClicked
+                    ></DeviceButton>
+                </DeviceButtonWrap>
+                <DeviceButtonWrap>
+                    <DeviceButton
+                        size="big"
+                        type="radio"
+                        isClicked
+                    ></DeviceButton>
+                </DeviceButtonWrap>
+                <DeviceButtonWrap>
+                    <DeviceButton
+                        size="big"
+                        type="radio"
+                        isClicked
+                    ></DeviceButton>
+                </DeviceButtonWrap>
+                <DeviceButtonWrap>
+                    <DeviceButton
+                        size="big"
+                        type="radio"
+                        isClicked
+                    ></DeviceButton>
+                </DeviceButtonWrap>
+                <DeviceButtonWrap>
+                    <DeviceButton
+                        size="big"
+                        type="radio"
+                        isClicked
+                    ></DeviceButton>
+                </DeviceButtonWrap>
+                <DeviceButtonWrap>
+                    <DeviceButton
+                        size="big"
+                        type="radio"
+                        isClicked
+                    ></DeviceButton>
+                </DeviceButtonWrap>
+            </Wrap>
+        </Wrapper>
+    )
+}

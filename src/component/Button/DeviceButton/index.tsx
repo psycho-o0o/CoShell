@@ -1,4 +1,3 @@
-import ToggleButton from "../ToggleButton"
 import {
     Wrapper,
     Wrap,
@@ -10,6 +9,8 @@ import {
 } from "./style"
 import { IDeviceButtonProps } from "./interface"
 import Image from "next/image"
+import ToggleButton from "../ToggleButton"
+import RadioButton from "../RadioButton"
 
 export default function DeviceButton({
     size,
@@ -36,11 +37,7 @@ export default function DeviceButton({
                             <ToggleButton on={isClicked} />
                         </ToggleWrap>
                     )}
-                    {/* {
-                        type === "radio" && <RadioButtonWrap>
-
-                        </RadioButtonWrap>
-                    } */}
+                    {type === "radio" && <RadioButton on={isClicked} />}
                     <DeviceWrap>
                         <div className="name">Smart TV</div>
                         {type === "toggle" && (

@@ -9,14 +9,14 @@ export default function RadioButton({ on }: IRadioButtonProps): JSX.Element {
         <Wrapper on={on}>
             {on ? (
                 <Image
-                    src="/images/icons/radioOn"
+                    src="/images/icons/radioOn.svg"
                     alt="radio button is on"
                     width={32}
                     height={32}
                 />
             ) : (
                 <Image
-                    src="/images/icons/radioOff"
+                    src="/images/icons/radioOff.svg"
                     alt="radio button is off"
                     width={32}
                     height={32}

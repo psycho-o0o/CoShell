@@ -7,6 +7,6 @@ export const Wrapper = styled.div<IWrapperProps>`
     width: 35px;
     height: 35px;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
 `
