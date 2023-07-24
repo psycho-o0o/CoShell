@@ -33,9 +33,7 @@ export const Title = styled.div`
     font-weight: bold;
     margin-bottom: 24px;
 `
-export const ButtonWrapper = styled.div`
-    margin-top: 150px;
-`
+export const ButtonWrapper = styled.div``
 
 export const ButtonWrap = styled.div`
     height: 48px;

@@ -4,13 +4,16 @@ import PopUp from "@/src/component/PopUp"
 
 import CreateRoom from "@/src/component/PopUp/createRoom"
 import SelectBackground from "@/src/component/PopUp/selectBackground"
+import AddDevices from "@/src/component/PopUp/addDevices"
 
 import { useRouter } from "next/router"
-import { useState, useCallback, useMemo } from "react"
+import { useState, useEffect, useCallback, useMemo, useRef } from "react"
 
 export default function RoomPage(): React.ReactElement {
+    const ref = useRef<HTMLDivElement>(null)
     const router = useRouter()
     const [popUpIndex, setPopUpIndex] = useState(-1)
+    const [blockScroll, setBlockScroll] = useState(false)
     const popUpComponents = [
         {
             name: "createRoom",
@@ -22,7 +25,7 @@ export default function RoomPage(): React.ReactElement {
         },
         {
             name: "addDevices",
-            component: <CreateRoom />,
+            component: <AddDevices />,
         },
         {
             name: "done",
@@ -56,18 +59,29 @@ export default function RoomPage(): React.ReactElement {
 
     const PopUpContent = useMemo(() => {
         if (popUpIndex === -1) return <></>
-        console.log(popUpIndex)
         return popUpComponents[popUpIndex].component
     }, [popUpIndex])
 
+    useEffect(() => {
+        if (popUpIndex === -1) setBlockScroll(false)
+        else {
+            setBlockScroll(true)
+            ref.current?.scrollTo(0, 0)
+        }
+    }, [popUpIndex])
+
     return (
-        <DashboardLayout onClickCreateButton={onClickCreateButton}>
+        <DashboardLayout
+            isBlockedScroll={blockScroll}
+            onClickCreateButton={onClickCreateButton}
+        >
             <>
                 <RoomCard backgroundImageName={"cardBackgroundImage1.png"} />
                 <RoomCard backgroundImageName={"cardBackgroundImage2.png"} />
                 <RoomCard backgroundImageName={"cardBackgroundImage3.png"} />
                 {popUpIndex !== -1 && (
                     <PopUp
+                        ref={ref}
                         onClickContinueButton={continuePopUpPage}
                         onClickBackButton={backPopUpPage}
                         onClickCloseButton={onClickCloseButton}

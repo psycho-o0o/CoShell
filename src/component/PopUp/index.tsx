@@ -9,6 +9,7 @@ import {
     ButtonWrapper,
     ButtonWrap,
 } from "./style"
+import { ForwardedRef, forwardRef } from "react"
 
 export interface IPopUpProps {
     onClickContinueButton: () => void
@@ -16,15 +17,18 @@ export interface IPopUpProps {
     onClickCloseButton: () => void
     children: React.ReactElement
 }
-export default function PopUp({
-    onClickContinueButton,
-    onClickBackButton,
-    onClickCloseButton,
-    children,
-}: IPopUpProps): React.ReactElement {
+export default forwardRef(function PopUp(
+    {
+        onClickContinueButton,
+        onClickBackButton,
+        onClickCloseButton,
+        children,
+    }: IPopUpProps,
+    ref: ForwardedRef<HTMLDivElement>,
+): React.ReactElement {
     return (
         <Wrapper>
-            <Wrap>
+            <Wrap ref={ref}>
                 <Container>
                     <CloseButtonWrap onClick={onClickCloseButton}>
                         <Image
@@ -58,4 +62,4 @@ export default function PopUp({
             </Wrap>
         </Wrapper>
     )
-}
+})
