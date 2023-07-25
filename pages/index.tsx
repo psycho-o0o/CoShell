@@ -1,49 +1,27 @@
-import styled from "styled-components"
 import Image from "next/image"
+import { useRouter } from "next/router"
 import MoveButton from "@/src/component/Button/MoveButton"
-
-export const Wrapper = styled.div`
-    width: 390px;
-    padding-bottom: 15px;
-`
-export const Wrap = styled.div`
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-`
-
-export const TopBackgroundWrap = styled.div`
-    width: 100%;
-    height: 320px;
-    position: relative;
-`
-
-export const LogoIconWrap = styled.div`
-    width: 80px;
-    height: 80px;
-    position: relative;
-    margin-top: -50px;
-    margin-bottom: 66px;
-`
-export const LogoTextWrap = styled.div`
-    font-size: 48px;
-    font-weight: bold;
-    margin-bottom: 13px;
-`
-export const VisionWrap = styled.p`
-    font-size: 16px;
-    font-weight: bold;
-    margin-bottom: 257px;
-    flex: 1 0 auto;
-`
-
-export const ButtonWrap = styled.div`
-    width: 127px;
-    height: 48px;
-`
+import { useCallback } from "react"
+import {
+    Wrapper,
+    Wrap,
+    TopBackgroundWrap,
+    LogoIconWrap,
+    LogoTextWrap,
+    VisionWrap,
+    ButtonWrap,
+} from "@/styles"
 
 export default function Home(): JSX.Element {
+    const router = useRouter()
+    const onClick = useCallback(() => {
+        if (localStorage.getItem("jwt")) {
+            router.push("/dashboard")
+            return
+        }
+        router.push("/auth/signIn")
+    }, [])
+
     return (
         <Wrapper>
             <Wrap>
@@ -64,7 +42,9 @@ export default function Home(): JSX.Element {
                 <LogoTextWrap>CoShell</LogoTextWrap>
                 <VisionWrap>A new way to control your home</VisionWrap>
                 <ButtonWrap>
-                    <MoveButton>GET STARTED</MoveButton>
+                    <MoveButton onClick={onClick} backgroundColor="green">
+                        GET STARTED
+                    </MoveButton>
                 </ButtonWrap>
             </Wrap>
         </Wrapper>

@@ -14,6 +14,7 @@ export const Wrap = styled.div<IWrapProps>`
     border-radius: 12px;
     font-size: 14px;
     font-weight: bold;
+    cursor: pointer;
     ${(props) => {
         if (props.backgroundColor === "green")
             return css`
