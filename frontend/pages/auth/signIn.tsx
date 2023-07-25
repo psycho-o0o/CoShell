@@ -1,46 +1,15 @@
 import Link from "next/link"
-import styled from "styled-components"
+import { useCallback } from "react"
 import MoveButton from "@/src/component/Button/MoveButton"
 import Input from "@/src/component/Input"
 import SignLayout from "@/src/component/Layout/Sign"
 import OAuthButton from "@/src/feature/OAuthButton/Container"
-
-const InputWrap = styled.div`
-    & > div {
-        margin-bottom: 20px;
-    }
-`
-
-const ButtonWrap = styled.div`
-    width: 100%;
-    height: 48px;
-    margin-bottom: 20px;
-`
-
-const OrWrap = styled.div`
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-    & > span:nth-child(2) {
-        padding: 0 10px;
-    }
-    & > span:nth-child(2n-1) {
-        flex: 1 0 auto;
-        height: 1px;
-        background-color: #eaeaea;
-    }
-`
-const GuestLinkWrap = styled.div`
-    margin-top: 20px;
-    font-size: 14px;
-    text-align: center;
-    padding: 20px;
-    & > a {
-        text-decoration: none;
-        color: black;
-        font-weight: bold;
-    }
-`
+import {
+    InputWrap,
+    ButtonWrap,
+    OrWrap,
+    GuestLinkWrap,
+} from "@/styles/auth/signIn"
 
 const OAuthArr = [
     {
@@ -54,14 +23,23 @@ const OAuthArr = [
 ]
 
 export default function SignIn(): JSX.Element {
+    const onClickMoveButton = useCallback(() => {
+        console.log("login")
+    }, [])
+
     return (
-        <SignLayout title="SIGN IN" subTitle="Have a Nice Day!">
+        <SignLayout
+            title="SIGN IN"
+            subTitle="Do you want to manipulate your devices? Let's do it"
+        >
             <InputWrap>
                 <Input placeHolder="Email" />
                 <Input placeHolder="Password" isVisibleShowButton />
             </InputWrap>
             <ButtonWrap>
-                <MoveButton>SignUp</MoveButton>
+                <MoveButton backgroundColor="green" onClick={onClickMoveButton}>
+                    LOGIN
+                </MoveButton>
             </ButtonWrap>
             <OrWrap>
                 <span />

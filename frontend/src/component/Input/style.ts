@@ -24,7 +24,7 @@ export const TitleWrap = styled.div<ITitleWrapProps>`
 `
 
 export const InputWrap = styled.div<IInputWrap>`
-    width: 342px;
+    width: 100%;
     height: 48px;
     font-size: 16px;
     border-radius: 8px;
@@ -70,7 +70,10 @@ export const ShowRemoveTextButton = styled(ShowButton)`
 
 export const ShowHelperTextButton = styled(ShowButton)``
 
-export const ShowVisibleTextButton = styled(ShowButton)``
+export const ToggleVisibleTextButton = styled(ShowButton)`
+    margin-right: 5px;
+    margin-top: 1px;
+`
 
 export const HelperWrap = styled.div<IHelperWrapProps>`
     font-size: 12px;

@@ -3,13 +3,14 @@ import {
     TitleWrap,
     InputWrap,
     StyledInput,
-    ShowVisibleTextButton,
+    ToggleVisibleTextButton,
     ShowHelperTextButton,
     HelperWrap,
     ShowRemoveTextButton,
 } from "./style"
 import { IInputProps } from "./interface"
 import Image from "next/image"
+import { useState, useCallback } from "react"
 
 export default function Input({
     type,
@@ -19,6 +20,10 @@ export default function Input({
     isVisibleShowButton,
     helperText,
 }: IInputProps): React.ReactElement {
+    const [showText, setShowText] = useState(false)
+    const onClickToggleVisibleTextButton = useCallback(() => {
+        setShowText((st) => !st)
+    }, [])
     return (
         <Wrapper>
             <TitleWrap type={type} isShown={title !== undefined}>
@@ -27,16 +32,11 @@ export default function Input({
             <InputWrap type={type}>
                 <StyledInput
                     placeholder={placeHolder}
+                    type={
+                        isVisibleShowButton && !showText ? "password" : "text"
+                    }
                     disabled={type === "disabled"}
                 ></StyledInput>
-                <ShowRemoveTextButton type={type} isShown={type === "typing"}>
-                    <Image
-                        src={"/images/icons/x2.svg"}
-                        alt="remove inputed text"
-                        width={18}
-                        height={18}
-                    />
-                </ShowRemoveTextButton>
 
                 {(type === "warning" || type === "help") && (
                     <ShowHelperTextButton
@@ -51,8 +51,9 @@ export default function Input({
                         />
                     </ShowHelperTextButton>
                 )}
-                <ShowVisibleTextButton
+                <ToggleVisibleTextButton
                     type={type}
+                    onClick={onClickToggleVisibleTextButton}
                     isShown={isVisibleShowButton !== undefined}
                 >
                     <Image
@@ -61,7 +62,15 @@ export default function Input({
                         width={24}
                         height={24}
                     />
-                </ShowVisibleTextButton>
+                </ToggleVisibleTextButton>
+                <ShowRemoveTextButton type={type} isShown={type === "typing"}>
+                    <Image
+                        src={"/images/icons/x2.svg"}
+                        alt="remove inputed text"
+                        width={18}
+                        height={18}
+                    />
+                </ShowRemoveTextButton>
             </InputWrap>
             <HelperWrap type={type} isShown={helperText !== undefined}>
                 {helperText}
