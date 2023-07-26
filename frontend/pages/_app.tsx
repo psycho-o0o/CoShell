@@ -1,6 +1,16 @@
-import type { AppProps } from "next/app"
-import "@/styles/global.css"
+import React, { FC } from "react"
+import { Provider } from "react-redux"
+import { AppProps } from "next/app"
+import { wrapper } from "@/src/util/redux/store"
 
-export default function MyApp({ Component, pageProps }: AppProps) {
-    return <Component {...pageProps} />
+const MyApp: FC<AppProps> = function MyApp({ Component, pageProps }) {
+    const { store, props } = wrapper.useWrappedStore(pageProps)
+
+    return (
+        <Provider store={store}>
+            <Component {...props} />
+        </Provider>
+    )
 }
+
+export default MyApp
