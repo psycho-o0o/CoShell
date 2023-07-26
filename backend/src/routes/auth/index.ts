@@ -1,17 +1,19 @@
 import express, { Router, Request, Response, NextFunction } from "express"
 import mongoose from "mongoose"
 
-const router: Router = express.Router()
+const AuthRouter: Router = express.Router()
 
-router.post(
+AuthRouter.post(
     "/signIn",
     async (req: Request, res: Response, next: NextFunction) => {},
 )
-router.post(
+AuthRouter.post(
     "/signUp",
     async (req: Request, res: Response, next: NextFunction) => {},
 )
-router.post(
+AuthRouter.post(
     "/check",
     async (req: Request, res: Response, next: NextFunction) => {},
 )
+
+export default AuthRouter

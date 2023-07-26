@@ -1,6 +1,7 @@
-import express, { Express, Request, Response } from "express"
+import express, { Express } from "express"
 import mongoose from "mongoose"
 import dotenv from "dotenv"
+import AuthRouter from "@/routes/auth"
 
 dotenv.config()
 
@@ -23,6 +24,8 @@ const connectDB = async () => {
 }
 
 connectDB()
+
+app.use("/auth", AuthRouter)
 
 app.listen(port, () => {
     try {
