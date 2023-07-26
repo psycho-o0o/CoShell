@@ -17,6 +17,10 @@
     "frontend/*": [
       "prettier --write --ignore-unknown",
       "eslint --fix"
+    ],
+    "backend/*" : [
+      "prettier --write --ignore-unknown",
+      "eslint --fix"
     ]
   },
   "main": "index.js",
