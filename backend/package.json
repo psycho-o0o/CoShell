@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
-  "scripts" : {
-    "build" : "yarn tsc",
-    "start" : "node build/index.js",
-    "dev" : "concurrently \"yarn tsc --watch\" \"nodemon -q build/index.js\""
+  "scripts": {
+    "build": "yarn tsc",
+    "start": "node build/index.js",
+    "dev": "concurrently \"yarn tsc --watch\" \"nodemon -q build/index.js\""
   },
   "dependencies": {
     "bcrypt": "^5.1.0",
@@ -22,7 +22,10 @@
     "@types/mongoose": "^5.11.97",
     "@types/node": "^20.4.4",
     "@types/nodemon": "^1.19.2",
+    "@typescript-eslint/eslint-plugin": "^6.2.0",
+    "@typescript-eslint/parser": "^6.2.0",
     "concurrently": "^8.2.0",
+    "eslint": "^8.45.0",
     "nodemon": "^3.0.1",
     "typescript": "^5.1.6"
   }
