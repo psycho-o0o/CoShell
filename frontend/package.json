@@ -6,8 +6,7 @@
         "dev": "next dev",
         "build": "next build",
         "start": "next start",
-        "lint": "next lint",
-        "prepare": "husky install"
+        "lint": "next lint"
     },
     "dependencies": {
         "@types/node": "20.4.2",
@@ -29,14 +28,6 @@
         "babel-plugin-styled-components": "^2.1.4",
         "eslint-config-prettier": "^8.8.0",
         "eslint-plugin-prettier": "^5.0.0",
-        "husky": "^8.0.3",
-        "lint-staged": "^13.2.3",
         "prettier": "^3.0.0"
-    },
-    "lint-staged": {
-        "**/*": [
-            "prettier --write --ignore-unknown",
-            "eslint --fix"
-        ]
     }
 }

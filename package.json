@@ -1,0 +1,26 @@
+{
+  "name": "psycho-o0o-CoShell",
+  "version": "0.0.1",
+  "scripts": {
+    "front:lint": "cd frontend & yarn lint",
+    "prepare": "husky install"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.2.0",
+    "eslint": "^8.0.1",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.3",
+    "typescript": "*"
+  },
+  "lint-staged": {
+    "frontend/*": [
+      "prettier --write --ignore-unknown",
+      "eslint --fix"
+    ]
+  },
+  "main": "index.js",
+  "repository": "https://github.com/psycho-o0o/CoShell.git",
+  "author": "psycho-o0o <psycho-o0o@gmail.com>",
+  "license": "MIT"
+}

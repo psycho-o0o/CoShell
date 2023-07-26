@@ -1,9 +1,10 @@
 *.png
 *.svg
-
-
 *.css
 
+.eslintrc.json
+yarn-error.log
+package.json
 yarn.lock
 README.md
 
