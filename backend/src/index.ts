@@ -1,15 +1,23 @@
 import express, { Express } from "express"
 import mongoose from "mongoose"
 import dotenv from "dotenv"
-import AuthRouter from "@/routes/auth"
+import cors from "cors"
+import authRouter from "@/routes/auth"
 
 dotenv.config()
 
 const app: Express = express()
 const port = process.env.PORT
 
+const corsOptions = {
+    origin: "*",
+    credential: true,
+}
+
+app.use(cors(corsOptions))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
+app.use("/auth", authRouter)
 
 const connectDB = async () => {
     const database = "CoShell"
@@ -24,8 +32,6 @@ const connectDB = async () => {
 }
 
 connectDB()
-
-app.use("/auth", AuthRouter)
 
 app.listen(port, () => {
     try {
