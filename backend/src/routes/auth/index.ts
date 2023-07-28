@@ -13,14 +13,11 @@ authRouter.post(
         console.log(req.body)
 
         if (email === "") {
-            res.statusCode = 400
-            res.send("email is empty")
+            res.status(400).send("email is empty")
         } else if (name === "") {
-            res.statusCode = 400
-            res.send("name is empty")
+            res.status(400).send("name is empty")
         } else if (password === "") {
-            res.statusCode = 400
-            res.send("password is empty")
+            res.status(400).send("password is empty")
         } else {
             res.sendStatus(200)
         }
