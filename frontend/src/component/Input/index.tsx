@@ -19,6 +19,7 @@ export default function Input({
     isVisibleHelperButton,
     isVisibleShowButton,
     helperText,
+    registerProps,
 }: IInputProps): React.ReactElement {
     const [showText, setShowText] = useState(false)
     const onClickToggleVisibleTextButton = useCallback(() => {
@@ -36,7 +37,8 @@ export default function Input({
                         isVisibleShowButton && !showText ? "password" : "text"
                     }
                     disabled={type === "disabled"}
-                ></StyledInput>
+                    {...registerProps}
+                />
 
                 {(type === "warning" || type === "help") && (
                     <ShowHelperTextButton
