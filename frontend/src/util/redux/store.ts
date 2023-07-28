@@ -1,10 +1,11 @@
-import { configureStore, createSlice, ThunkAction } from "@reduxjs/toolkit"
+import { configureStore, ThunkAction } from "@reduxjs/toolkit"
 import { Action, combineReducers } from "redux"
-import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux"
 import { createWrapper, MakeStore } from "next-redux-wrapper"
 import logger from "redux-logger"
 
-const reducers = {}
+import userSlice from "@/src/feature/user/slice"
+
+const reducers = { userSlice }
 
 const makeStore: MakeStore<any> = ({}) =>
     configureStore({
