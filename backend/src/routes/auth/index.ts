@@ -1,6 +1,14 @@
+import UserSchema from "@/db/model/user"
 import express, { Router, Request, Response, NextFunction } from "express"
+import mongoose from "mongoose"
+import { generateToken } from "@/util/jwt"
 
 const authRouter: Router = express.Router()
+
+export interface MongoError {
+    name: string
+    code: number
+}
 
 authRouter.post(
     "/signIn",
@@ -10,16 +18,31 @@ authRouter.post(
     "/signUp",
     async (req: Request, res: Response, next: NextFunction) => {
         const { name, email, password } = req.body
-        console.log(req.body)
 
         if (email === "") {
-            res.status(400).send("email is empty")
+            return res.status(401).send("email is empty")
         } else if (name === "") {
-            res.status(400).send("name is empty")
+            return res.status(401).send("name is empty")
         } else if (password === "") {
-            res.status(400).send("password is empty")
-        } else {
-            res.sendStatus(200)
+            return res.status(401).send("password is empty")
+        }
+
+        const userModel = mongoose.model("User", UserSchema)
+
+        try {
+            const jwt = generateToken({
+                name: name,
+                email: email,
+            })
+            return res.status(200).send({
+                jwt,
+            })
+        } catch (err: any | MongoError) {
+            if (err.name === "MongoServerError" && err.code === 11000) {
+                return res.status(401).send("user already exists.")
+            } else {
+                console.log(err)
+            }
         }
     },
 )

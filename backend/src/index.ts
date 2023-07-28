@@ -20,7 +20,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use("/auth", authRouter)
 
 const connectDB = async () => {
-    const database = "CoShell"
+    const database = "coShell"
     try {
         await mongoose.connect(
             `mongodb://${process.env.DB_ADDR}/${database}` as string,
