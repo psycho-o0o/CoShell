@@ -5,12 +5,14 @@ export interface IInitialStateProps {
     email: string
     name: string
     birth: string
+    error: string | null | unknown
 }
 
 const initialState: IInitialStateProps = {
     email: "",
     name: "",
     birth: "",
+    error: null,
 }
 
 const userSlice = createSlice({
@@ -42,10 +44,11 @@ const userSlice = createSlice({
                 console.log("회원가입에 성공하였습니다.")
             })
             .addCase(registerThunk.rejected, (state, action) => {
-                console.log("회원가입에 실패하였습니다")
+                state.error = action.payload
             })
             .addCase(registerThunk.pending, (state, action) => {
                 console.log("회원가입에 시도중입니다.")
+                state.error = null
             }),
 })
 
