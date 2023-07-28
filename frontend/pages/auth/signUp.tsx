@@ -1,9 +1,14 @@
 import Link from "next/link"
 import styled from "styled-components"
+import { useCallback } from "react"
+
+import { useForm, SubmitHandler } from "react-hook-form"
 import MoveButton from "@/src/component/Button/MoveButton"
 import Input from "@/src/component/Input"
 import SignLayout from "@/src/component/Layout/Sign"
 import OAuthButton from "@/src/feature/OAuthButton/Container"
+import { useAppSelector, useAppDispatch } from "@/hook/redux"
+import { registerThunk } from "@/src/feature/user/thunk"
 
 const InputWrap = styled.div`
     & > div {
@@ -65,23 +70,50 @@ const OAuthArr = [
     },
 ]
 
+export interface IInputsProps {
+    name: string
+    email: string
+    password: string
+}
+
 export default function SignUp(): JSX.Element {
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm<IInputsProps>()
+    const dispatch = useAppDispatch()
+    const onSubmit: SubmitHandler<IInputsProps> = useCallback(
+        ({ name, email, password }) => {
+            dispatch(registerThunk({ name, email, password }))
+        },
+        [],
+    )
     return (
         <SignLayout
             title="SIGN UP"
             subTitle="Looks like you don’t have an account. Let’s create a new account for you."
         >
             <InputWrap>
-                <Input placeHolder="Name" />
-                <Input placeHolder="Email" />
-                <Input placeHolder="Password" isVisibleShowButton />
+                <Input placeHolder="Name" registerProps={register("name")} />
+                <Input placeHolder="Email" registerProps={register("email")} />
+                <Input
+                    placeHolder="Password"
+                    isVisibleShowButton
+                    registerProps={register("password")}
+                />
             </InputWrap>
             <TermsWrap>
                 By selecting Create Account below, I agree to{" "}
                 <span>Terms of Service & Privacy Policy</span>
             </TermsWrap>
             <ButtonWrap>
-                <MoveButton>CREATE ACCOUNT</MoveButton>
+                <MoveButton
+                    backgroundColor="green"
+                    onClick={handleSubmit(onSubmit)}
+                >
+                    CREATE ACCOUNT
+                </MoveButton>
             </ButtonWrap>
             <OrWrap>
                 <span />

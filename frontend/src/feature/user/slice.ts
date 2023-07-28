@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit"
-import { loginThunk } from "./thunk"
+import { loginThunk, registerThunk } from "./thunk"
 
 export interface IInitialStateProps {
     email: string
@@ -37,6 +37,15 @@ const userSlice = createSlice({
             })
             .addCase(loginThunk.pending, (state, action) => {
                 console.log("로그인 시도중입니다.")
+            })
+            .addCase(registerThunk.fulfilled, (state, action) => {
+                console.log("회원가입에 성공하였습니다.")
+            })
+            .addCase(registerThunk.rejected, (state, action) => {
+                console.log("회원가입에 실패하였습니다")
+            })
+            .addCase(registerThunk.pending, (state, action) => {
+                console.log("회원가입에 시도중입니다.")
             }),
 })
 
