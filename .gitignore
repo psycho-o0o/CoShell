@@ -3,3 +3,6 @@ node_modules
 .public.key
 
 node_modules
+private.key
+public.key
+
