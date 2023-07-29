@@ -3,9 +3,9 @@ import { Action, combineReducers } from "redux"
 import { createWrapper, MakeStore } from "next-redux-wrapper"
 import logger from "redux-logger"
 
-import userSlice from "@/src/feature/user/slice"
+import user from "@/src/feature/user/slice"
 
-const reducers = { userSlice }
+const reducers = { user }
 
 const makeStore: MakeStore<any> = ({}) =>
     configureStore({

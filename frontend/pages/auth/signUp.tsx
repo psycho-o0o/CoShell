@@ -1,7 +1,6 @@
 import Link from "next/link"
 import styled from "styled-components"
 import { useCallback } from "react"
-
 import { useForm, SubmitHandler } from "react-hook-form"
 import MoveButton from "@/src/component/Button/MoveButton"
 import Input from "@/src/component/Input"
@@ -77,11 +76,7 @@ export interface IInputsProps {
 }
 
 export default function SignUp(): JSX.Element {
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-    } = useForm<IInputsProps>()
+    const { register, handleSubmit } = useForm<IInputsProps>()
     const dispatch = useAppDispatch()
     const onSubmit: SubmitHandler<IInputsProps> = useCallback(
         ({ name, email, password }) => {
