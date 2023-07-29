@@ -30,6 +30,11 @@ authRouter.post(
         const userModel = mongoose.model("User", UserSchema)
 
         try {
+            await new userModel({
+                name: name,
+                email: email,
+                password: password,
+            }).save()
             const jwt = generateToken({
                 name: name,
                 email: email,
