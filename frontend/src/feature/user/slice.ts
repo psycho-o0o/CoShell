@@ -5,6 +5,7 @@ export interface IInitialStateProps {
     email: string
     name: string
     birth: string
+    jwt: string | null
     error: string | null | unknown
 }
 
@@ -12,6 +13,7 @@ const initialState: IInitialStateProps = {
     email: "",
     name: "",
     birth: "",
+    jwt: null,
     error: null,
 }
 
@@ -41,13 +43,14 @@ const userSlice = createSlice({
                 console.log("로그인 시도중입니다.")
             })
             .addCase(registerThunk.fulfilled, (state, action) => {
-                console.log("회원가입에 성공하였습니다.")
+                state.jwt = action.payload.jwt
+                state.name = action.meta.arg.name
+                state.email = action.meta.arg.email
             })
             .addCase(registerThunk.rejected, (state, action) => {
-                state.error = action.payload
+                state = { ...initialState, error: action.payload }
             })
             .addCase(registerThunk.pending, (state, action) => {
-                console.log("회원가입에 시도중입니다.")
                 state.error = null
             }),
 })
