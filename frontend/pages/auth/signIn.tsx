@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { useCallback } from "react"
+import { useCallback, useMemo } from "react"
 import { useForm, SubmitHandler } from "react-hook-form"
 import MoveButton from "@/src/component/Button/MoveButton"
 import Input from "@/src/component/Input"
@@ -8,6 +8,7 @@ import OAuthButton from "@/src/feature/OAuthButton/Container"
 import {
     InputWrap,
     ButtonWrap,
+    ErrorWrap,
     OrWrap,
     GuestLinkWrap,
 } from "@/styles/auth/signIn"
@@ -36,6 +37,7 @@ export default function SignIn(): JSX.Element {
         handleSubmit,
         formState: { errors },
     } = useForm<IInputsProps>()
+    const { error } = useAppSelector((state) => state.user)
     const dispatch = useAppDispatch()
     const onSubmit: SubmitHandler<IInputsProps> = useCallback(
         ({ email, password }) => {
@@ -43,6 +45,14 @@ export default function SignIn(): JSX.Element {
         },
         [],
     )
+
+    const errorText = useMemo(() => {
+        if (error === "there is no user") {
+            return "사용자가 존재하지 않습니다."
+        } else if (error === "password is invalid") {
+            return "패스워드를 틀리셨습니다."
+        }
+    }, [error])
 
     return (
         <SignLayout
@@ -61,6 +71,7 @@ export default function SignIn(): JSX.Element {
                         registerProps={register("password")}
                     />
                 </InputWrap>
+                <ErrorWrap>{errorText}</ErrorWrap>
                 <ButtonWrap>
                     <MoveButton
                         backgroundColor="green"

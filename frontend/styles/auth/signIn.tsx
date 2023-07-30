@@ -11,6 +11,12 @@ export const ButtonWrap = styled.div`
     height: 48px;
     margin-bottom: 20px;
 `
+export const ErrorWrap = styled.div`
+    text-align: center;
+    color: red;
+    font-size: 12px;
+    margin-bottom: 20px;
+`
 
 export const OrWrap = styled.div`
     display: flex;
