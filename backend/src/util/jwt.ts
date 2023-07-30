@@ -9,18 +9,19 @@ import {
 import * as fs from "fs"
 import * as path from "path"
 
-interface IPayload {
-    name?: string
-    email?: string
+export interface IPayloadProps {
+    name: string
+    email: string
+    birth?: string
 }
 
-export function generateToken(payload: any) {
+export function generateToken(payload: IPayloadProps) {
     const privateKey = fs.readFileSync(
         path.join(__dirname, "./../../private.key"),
     )
     const signInOptions: SignOptions = {
         algorithm: "RS256",
-        expiresIn: "1000",
+        expiresIn: "1h",
     }
 
     return sign(
