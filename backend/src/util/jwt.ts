@@ -20,7 +20,7 @@ export function generateToken(payload: any) {
     )
     const signInOptions: SignOptions = {
         algorithm: "RS256",
-        expiresIn: "1h",
+        expiresIn: "1000",
     }
 
     return sign(
@@ -34,7 +34,7 @@ export function validateToken(
     token: string,
 ): Promise<Jwt | JwtPayload | string | undefined> {
     const publicKey = fs.readFileSync(
-        path.join(__dirname, "./../../../public.key"),
+        path.join(__dirname, "./../../public.key"),
     )
 
     const verifyOptions: VerifyOptions = {
