@@ -10,12 +10,12 @@ import SceneButton from "@/src/component/Button/SceneButton"
 
 export default function DashBoard(): JSX.Element {
     return (
-        <DashboardLayout>
+        <DashboardLayout onClickCreateButton={() => console.log(11)}>
             <>
                 <DeviceButtonWrap>
-                    <DeviceButton size="small" isClicked />
-                    <DeviceButton size="small" />
-                    <DeviceButton size="small" />
+                    <DeviceButton type="toggle" size="small" isClicked />
+                    <DeviceButton type="toggle" size="small" />
+                    <DeviceButton type="toggle" size="small" />
                 </DeviceButtonWrap>
                 <SceneButtonWrap>
                     <h2>Scenes</h2>
@@ -26,20 +26,9 @@ export default function DashBoard(): JSX.Element {
                 <FrequentlyUsedButtonWrap>
                     <h2>Frequently Used</h2>
                     <BigDeviceButtonWrap>
-                        <DeviceButton size="big" isClicked />
-                        <DeviceButton size="big" isClicked />
-                        <DeviceButton size="big" isClicked />
-
-                        <DeviceButton size="big" isClicked />
-                        <DeviceButton size="big" isClicked />
-
-                        <DeviceButton size="big" isClicked />
-                        <DeviceButton size="big" isClicked />
-
-                        <DeviceButton size="big" isClicked />
-                        <DeviceButton size="big" isClicked />
-
-                        <DeviceButton size="big" isClicked />
+                        <DeviceButton type="toggle" size="big" isClicked />
+                        <DeviceButton type="toggle" size="big" isClicked />
+                        <DeviceButton type="toggle" size="big" isClicked />
                     </BigDeviceButtonWrap>
                 </FrequentlyUsedButtonWrap>
             </>
