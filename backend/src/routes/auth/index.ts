@@ -96,13 +96,11 @@ authRouter.get("/check", authorize, async (req: Request, res: Response) => {
 
     if (token === "TokenExpiredError") {
         return res.status(401).send("token was expired")
-    }
-
-    if (typeof token !== "string") {
+    } else {
         res.send({
-            name: token.name,
-            email: token.email,
-            birth: token.birth && null,
+            name: (token as ITokenProps).name,
+            email: (token as ITokenProps).email,
+            birth: (token as ITokenProps).birth && null,
         })
     }
 })

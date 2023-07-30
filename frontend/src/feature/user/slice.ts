@@ -21,8 +21,8 @@ const userSlice = createSlice({
     name: "user",
     initialState,
     reducers: {
-        resetError: (state) => {
-            state.error = null
+        resetJwt: (state) => {
+            state.jwt = null
         },
     },
     extraReducers: (builder) =>
@@ -37,7 +37,7 @@ const userSlice = createSlice({
                 state.email = ""
                 state.name = ""
                 state.birth = ""
-                state.jwt = ""
+                state.jwt = null
                 state.error = action.payload
             })
             .addCase(loginThunk.pending, (state) => {
@@ -54,7 +54,7 @@ const userSlice = createSlice({
                 state.email = ""
                 state.name = ""
                 state.birth = ""
-                state.jwt = ""
+                state.jwt = null
                 state.error = action.payload
             })
             .addCase(registerThunk.pending, (state) => {
@@ -62,7 +62,7 @@ const userSlice = createSlice({
                 state.error = null
             })
             .addCase(checkThunk.fulfilled, (state, action) => {
-                state.jwt = action.payload.jwt
+                state.jwt = localStorage.getItem("jwt")
                 state.name = action.payload.name
                 state.email = action.payload.email
                 if (action.payload.birth) state.birth = action.payload.birth
@@ -71,12 +71,12 @@ const userSlice = createSlice({
                 state.email = ""
                 state.name = ""
                 state.birth = ""
-                state.jwt = ""
+                state.jwt = null
                 state.error = action.payload
                 localStorage.removeItem("jwt")
             })
             .addCase(checkThunk.pending, (state, action) => {}),
 })
 
-export const { resetError } = userSlice.actions
+export const { resetJwt } = userSlice.actions
 export default userSlice.reducer

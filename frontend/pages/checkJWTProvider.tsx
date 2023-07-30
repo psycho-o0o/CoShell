@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import { checkThunk } from "@/src/feature/user/thunk"
 import { useAppDispatch, useAppSelector } from "@/hook/redux"
 import { useRouter } from "next/router"
-import { resetError } from "@/src/feature/user/slice"
+import { resetJwt } from "@/src/feature/user/slice"
 
 export interface IChecckJWTProvider {
     children: React.ReactElement
@@ -27,12 +27,19 @@ export function CheckJWTProvider({
             if (error) {
                 if (error === "token was expired") {
                     alert("인증이 만료되었습니다.")
-                    dispatch(resetError())
+                    dispatch(resetJwt())
                     return
                 }
             }
 
-            if (localStorageJWT && !jwt) {
+            if (localStorage && jwt) {
+                if (["/auth/signIn", "/auth/signUp"].includes(pathname)) {
+                    router.push("/dashboard")
+                    return
+                } else {
+                    setShowChildren(true)
+                }
+            } else if (localStorageJWT && !jwt) {
                 dispatch(checkThunk({ jwt: localStorageJWT }))
             } else if (!localStorageJWT && jwt) {
                 localStorage.setItem("jwt", jwt)
