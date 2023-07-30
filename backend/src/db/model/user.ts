@@ -3,7 +3,7 @@ import { Schema } from "mongoose"
 export interface IUserProps {
     name: string
     email: string
-    phone?: string
+    birth?: string
     password: string
 }
 
@@ -17,7 +17,7 @@ const UserSchema = new Schema<IUserProps>({
         required: true,
         index: { unique: true },
     },
-    phone: {
+    birth: {
         type: String,
     },
     password: {
