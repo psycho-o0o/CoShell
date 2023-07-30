@@ -1,5 +1,5 @@
-import { PayloadAction, createSlice } from "@reduxjs/toolkit"
-import { loginThunk, registerThunk } from "./thunk"
+import { createSlice } from "@reduxjs/toolkit"
+import { checkThunk, loginThunk, registerThunk } from "./thunk"
 
 export interface IInitialStateProps {
     email: string
@@ -20,17 +20,7 @@ const initialState: IInitialStateProps = {
 const userSlice = createSlice({
     name: "user",
     initialState,
-    reducers: {
-        changeEmail: (state, action: PayloadAction<string>) => {
-            state.email = action.payload
-        },
-        changeName: (state, action: PayloadAction<string>) => {
-            state.name = action.payload
-        },
-        changeBirth: (state, action: PayloadAction<string>) => {
-            state.birth = action.payload
-        },
-    },
+    reducers: {},
     extraReducers: (builder) =>
         builder
             .addCase(loginThunk.fulfilled, (state, action) => {
@@ -46,14 +36,25 @@ const userSlice = createSlice({
                 state.jwt = action.payload.jwt
                 state.name = action.meta.arg.name
                 state.email = action.meta.arg.email
+                localStorage.setItem("jwt", action.payload.jwt)
             })
             .addCase(registerThunk.rejected, (state, action) => {
                 state = { ...initialState, error: action.payload }
             })
             .addCase(registerThunk.pending, (state, action) => {
                 state.error = null
-            }),
+            })
+            .addCase(checkThunk.fulfilled, (state, action) => {
+                state.jwt = action.payload.jwt
+                state.name = action.payload.name
+                state.email = action.payload.email
+                if (action.payload.birth) state.birth = action.payload.birth
+            })
+            .addCase(checkThunk.rejected, (state, action) => {
+                state = { ...initialState, error: action.payload }
+            })
+            .addCase(checkThunk.pending, (state, action) => {}),
 })
 
-export const { changeEmail, changeName, changeBirth } = userSlice.actions
+export const {} = userSlice.actions
 export default userSlice.reducer

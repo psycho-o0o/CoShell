@@ -14,6 +14,10 @@ export interface IRegisterThunkProps {
     password: string
 }
 
+export interface ICheckThunkProps {
+    jwt: string
+}
+
 export const loginThunk = createAsyncThunk(
     "auth/loginThunk",
     async ({ email, password }: ILoginThunkProps, thunkAPI) => {
@@ -46,6 +50,28 @@ export const registerThunk = createAsyncThunk(
                     name: name,
                     email: email,
                     password: password,
+                },
+            })
+            return response.data
+        } catch (err: unknown | AxiosError) {
+            if (axios.isAxiosError(err) && err.response) {
+                return thunkAPI.rejectWithValue(err.response?.data)
+            } else {
+                return thunkAPI.rejectWithValue(err)
+            }
+        }
+    },
+)
+
+export const checkThunk = createAsyncThunk(
+    "auth/checkThunk",
+    async ({ jwt }: ICheckThunkProps, thunkAPI) => {
+        try {
+            const response = await axiosInstance({
+                method: "get",
+                url: "/auth/check",
+                headers: {
+                    Authorization: jwt,
                 },
             })
             return response.data
