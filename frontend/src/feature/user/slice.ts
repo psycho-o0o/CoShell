@@ -28,13 +28,21 @@ const userSlice = createSlice({
     extraReducers: (builder) =>
         builder
             .addCase(loginThunk.fulfilled, (state, action) => {
-                console.log("로그인에 성공하였습니다.")
+                state.jwt = action.payload.jwt
+                state.name = action.payload.name
+                state.email = action.payload.email
+                localStorage.setItem("jwt", action.payload.jwt)
             })
             .addCase(loginThunk.rejected, (state, action) => {
-                console.log("로그인에 실패하였습니다.")
+                state.email = ""
+                state.name = ""
+                state.birth = ""
+                state.jwt = ""
+                state.error = action.payload
             })
-            .addCase(loginThunk.pending, (state, action) => {
-                console.log("로그인 시도중입니다.")
+            .addCase(loginThunk.pending, (state) => {
+                console.log("로그인 중입니다.")
+                state.error = null
             })
             .addCase(registerThunk.fulfilled, (state, action) => {
                 state.jwt = action.payload.jwt
@@ -43,9 +51,14 @@ const userSlice = createSlice({
                 localStorage.setItem("jwt", action.payload.jwt)
             })
             .addCase(registerThunk.rejected, (state, action) => {
-                state = { ...initialState, error: action.payload }
+                state.email = ""
+                state.name = ""
+                state.birth = ""
+                state.jwt = ""
+                state.error = action.payload
             })
-            .addCase(registerThunk.pending, (state, action) => {
+            .addCase(registerThunk.pending, (state) => {
+                console.log("회원가입중입니다.")
                 state.error = null
             })
             .addCase(checkThunk.fulfilled, (state, action) => {
