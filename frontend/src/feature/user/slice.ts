@@ -20,7 +20,11 @@ const initialState: IInitialStateProps = {
 const userSlice = createSlice({
     name: "user",
     initialState,
-    reducers: {},
+    reducers: {
+        resetError: (state) => {
+            state.error = null
+        },
+    },
     extraReducers: (builder) =>
         builder
             .addCase(loginThunk.fulfilled, (state, action) => {
@@ -51,10 +55,15 @@ const userSlice = createSlice({
                 if (action.payload.birth) state.birth = action.payload.birth
             })
             .addCase(checkThunk.rejected, (state, action) => {
-                state = { ...initialState, error: action.payload }
+                state.email = ""
+                state.name = ""
+                state.birth = ""
+                state.jwt = ""
+                state.error = action.payload
+                localStorage.removeItem("jwt")
             })
             .addCase(checkThunk.pending, (state, action) => {}),
 })
 
-export const {} = userSlice.actions
+export const { resetError } = userSlice.actions
 export default userSlice.reducer

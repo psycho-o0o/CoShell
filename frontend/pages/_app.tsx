@@ -11,7 +11,7 @@ const MyApp: FC<AppProps> = function MyApp({ Component, pageProps }) {
 
     return (
         <Provider store={store}>
-            <CheckJWTProvider store={store} router={router}>
+            <CheckJWTProvider>
                 <Component {...props} />
             </CheckJWTProvider>
         </Provider>

@@ -1,32 +1,39 @@
-import { AppStore } from "@/src/util/redux/store"
-import { NextRouter } from "next/router"
 import React, { useEffect, useState } from "react"
 import { checkThunk } from "@/src/feature/user/thunk"
+import { useAppDispatch, useAppSelector } from "@/hook/redux"
+import { useRouter } from "next/router"
+import { resetError } from "@/src/feature/user/slice"
 
 export interface IChecckJWTProvider {
-    store: AppStore
-    router: NextRouter
     children: React.ReactElement
 }
 
 export function CheckJWTProvider({
-    store,
-    router,
     children,
 }: IChecckJWTProvider): React.ReactElement {
+    const { jwt, error } = useAppSelector((state) => state.user)
+    const dispatch = useAppDispatch()
+    const router = useRouter()
+
     const [showChildren, setShowChildren] = useState(false)
 
     useEffect(() => {
-        const state = store.getState()
-        let { jwt } = state.user
         const { pathname } = router
 
         // 새로고침했을 때도 jwt 유지하기
         if (typeof window !== undefined) {
             const localStorageJWT = localStorage.getItem("jwt")
 
+            if (error) {
+                if (error === "token was expired") {
+                    alert("인증이 만료되었습니다.")
+                    dispatch(resetError())
+                    return
+                }
+            }
+
             if (localStorageJWT && !jwt) {
-                store.dispatch(checkThunk({ jwt: localStorageJWT }))
+                dispatch(checkThunk({ jwt: localStorageJWT }))
             } else if (!localStorageJWT && jwt) {
                 localStorage.setItem("jwt", jwt)
             } else if (!localStorageJWT && !jwt) {
@@ -34,12 +41,12 @@ export function CheckJWTProvider({
                     setShowChildren(true)
                     return
                 } else {
-                    router.push("/")
+                    router.push("/auth/signIn")
                     return
                 }
             }
         }
-    }, [store, router])
+    }, [jwt, error, dispatch, router])
 
     return showChildren ? <>{children}</> : <></>
 }
