@@ -3,6 +3,7 @@ import express, { Router, Request, Response, NextFunction } from "express"
 import mongoose from "mongoose"
 import { generateToken } from "@/util/jwt"
 import { authorize } from "@/middleware/auth"
+import { makeHashPassword } from "@/util/password"
 
 const authRouter: Router = express.Router()
 
@@ -11,7 +12,22 @@ export interface MongoError {
     code: number
 }
 
-authRouter.post("/signIn", async (req: Request, res: Response) => {})
+authRouter.post("/signIn", async (req: Request, res: Response) => {
+    const { email, password } = req.body
+
+    if (email === "") {
+        return res.status(401).send("email is empty")
+    } else if (password === "") {
+        return res.status(401).send("password is empty")
+    }
+
+    const userModel = mongoose.model("User", UserSchema)
+
+    try {
+        userModel.findOne({email})
+    }
+
+})
 authRouter.post("/signUp", async (req: Request, res: Response) => {
     const { name, email, password } = req.body
 
@@ -29,7 +45,7 @@ authRouter.post("/signUp", async (req: Request, res: Response) => {
         await new userModel({
             name: name,
             email: email,
-            password: password,
+            password: makeHashPassword(password),
         }).save()
         const jwt = generateToken({
             name: name,
