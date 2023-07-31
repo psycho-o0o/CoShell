@@ -10,7 +10,7 @@ import {
     ButtonWrap,
     ErrorWrap,
     OrWrap,
-    GuestLinkWrap,
+    LinkWrap,
 } from "@/styles/auth/signIn"
 import { useAppSelector, useAppDispatch } from "@/hook/redux"
 import { loginThunk } from "@/src/feature/user/thunk"
@@ -90,9 +90,12 @@ export default function SignIn(): JSX.Element {
             {OAuthArr.map((OAuth) => (
                 <OAuthButton key={OAuth.site} OAuth={OAuth} />
             ))}
-            <GuestLinkWrap>
+            <LinkWrap>
+                <Link href={"/auth/signUp"}>SIGN UP</Link>
+            </LinkWrap>
+            <LinkWrap>
                 <Link href={"/dashboard"}>CONTINUE AS A GUEST</Link>
-            </GuestLinkWrap>
+            </LinkWrap>
         </SignLayout>
     )
 }
