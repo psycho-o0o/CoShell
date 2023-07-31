@@ -24,6 +24,9 @@ const userSlice = createSlice({
         resetJwt: (state) => {
             state.jwt = null
         },
+        resetError: (state) => {
+            state.error = null
+        },
     },
     extraReducers: (builder) =>
         builder
@@ -78,5 +81,5 @@ const userSlice = createSlice({
             .addCase(checkThunk.pending, (state, action) => {}),
 })
 
-export const { resetJwt } = userSlice.actions
+export const { resetJwt, resetError } = userSlice.actions
 export default userSlice.reducer
