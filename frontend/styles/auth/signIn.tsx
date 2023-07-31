@@ -31,7 +31,7 @@ export const OrWrap = styled.div`
         background-color: #eaeaea;
     }
 `
-export const GuestLinkWrap = styled.div`
+export const LinkWrap = styled.div`
     margin-top: 20px;
     font-size: 14px;
     text-align: center;
