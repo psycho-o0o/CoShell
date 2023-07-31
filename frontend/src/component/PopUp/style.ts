@@ -26,6 +26,7 @@ export const Container = styled.div`
 
 export const CloseButtonWrap = styled.div`
     display: flex;
+    cursor: pointer;
     justify-content: flex-end;
 `
 export const Title = styled.div`
