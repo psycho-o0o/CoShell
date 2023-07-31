@@ -104,6 +104,7 @@ export default function SignUp(): JSX.Element {
             </TermsWrap>
             <ButtonWrap>
                 <MoveButton
+                    type="submit"
                     backgroundColor="green"
                     onClick={handleSubmit(onSubmit)}
                 >

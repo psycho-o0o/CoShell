@@ -74,6 +74,7 @@ export default function SignIn(): JSX.Element {
                 <ErrorWrap>{errorText}</ErrorWrap>
                 <ButtonWrap>
                     <MoveButton
+                        type="submit"
                         backgroundColor="green"
                         onClick={handleSubmit(onSubmit)}
                     >
