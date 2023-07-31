@@ -46,7 +46,7 @@ const OrWrap = styled.div`
         background-color: #eaeaea;
     }
 `
-const GuestLinkWrap = styled.div`
+const LinkWrap = styled.div`
     margin-top: 20px;
     font-size: 14px;
     text-align: center;
@@ -118,9 +118,12 @@ export default function SignUp(): JSX.Element {
             {OAuthArr.map((OAuth) => (
                 <OAuthButton key={OAuth.site} OAuth={OAuth} />
             ))}
-            <GuestLinkWrap>
+            <LinkWrap>
+                <Link href={"/auth/signIn"}>SIGN IN</Link>
+            </LinkWrap>
+            <LinkWrap>
                 <Link href={"/dashboard"}>CONTINUE AS A GUEST</Link>
-            </GuestLinkWrap>
+            </LinkWrap>
         </SignLayout>
     )
 }
