@@ -4,7 +4,7 @@ export interface IWrapProps {
     backgroundColor: string
 }
 
-export const Wrap = styled.div<IWrapProps>`
+export const Wrap = styled.button<IWrapProps>`
     width: 100%;
     height: 100%;
     box-sizing: border-box;
@@ -14,6 +14,8 @@ export const Wrap = styled.div<IWrapProps>`
     border-radius: 12px;
     font-size: 14px;
     font-weight: bold;
+    outline: none;
+    border: none;
     cursor: pointer;
     ${(props) => {
         if (props.backgroundColor === "green")
