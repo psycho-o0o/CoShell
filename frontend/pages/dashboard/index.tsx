@@ -6,6 +6,7 @@ import PopUp from "@/src/component/PopUp"
 import AddDevices from "@/src/component/PopUp/dashboard/addDevices"
 import { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import { useRouter } from "next/router"
+import SelectLocation from "@/src/component/PopUp/dashboard/selectLocation"
 
 export const DeviceButtonWrap = styled.div`
     display: flex;
@@ -44,6 +45,10 @@ const popUpComponents = [
     {
         name: "createRoom",
         component: <AddDevices />,
+    },
+    {
+        name: "selectLocation",
+        component: <SelectLocation />,
     },
 ]
 
