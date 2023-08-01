@@ -13,18 +13,22 @@ import { useState, useEffect, useCallback, useMemo, useRef } from "react"
 const popUpComponents = [
     {
         name: "createRoom",
+        title: "Create Room",
         component: <CreateRoom />,
     },
     {
         name: "selectBackground",
+        title: "Select Background",
         component: <SelectBackground />,
     },
     {
         name: "addDevices",
+        title: "Add Devices",
         component: <AddDevices />,
     },
     {
         name: "done",
+        title: "Done",
         component: <Success />,
     },
 ]
@@ -59,6 +63,10 @@ export default function RoomPage(): React.ReactElement {
         router.push("/room")
     }, [router])
 
+    const PopUpTitle = useMemo(
+        () => popUpIndex !== -1 && popUpComponents[popUpIndex].title,
+        [popUpIndex],
+    )
     const PopUpClose = useMemo(
         () => popUpIndex === popUpComponents.length - 1,
         [popUpIndex],
@@ -89,6 +97,7 @@ export default function RoomPage(): React.ReactElement {
                 {popUpIndex !== -1 && (
                     <PopUp
                         ref={ref}
+                        title={PopUpTitle}
                         close={PopUpClose}
                         onClickContinueButton={continuePopUpPage}
                         onClickBackButton={backPopUpPage}
