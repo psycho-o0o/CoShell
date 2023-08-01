@@ -8,6 +8,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import { useRouter } from "next/router"
 import SelectLocation from "@/src/component/PopUp/dashboard/selectLocation"
 import DecideName from "@/src/component/PopUp/dashboard/decideName"
+import Success from "@/src/component/PopUp/dashboard/success"
 
 export const DeviceButtonWrap = styled.div`
     display: flex;
@@ -54,6 +55,10 @@ const popUpComponents = [
     {
         name: "decideName",
         component: <DecideName />,
+    },
+    {
+        name: "success",
+        component: <Success />,
     },
 ]
 
