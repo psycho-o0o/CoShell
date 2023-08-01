@@ -28,5 +28,5 @@ export interface IInputProps {
     isVisibleHelperButton?: boolean
     isVisibleShowButton?: boolean
     helperText?: string
-    registerProps: UseFormRegisterReturn<string>
+    registerProps?: UseFormRegisterReturn<string>
 }
