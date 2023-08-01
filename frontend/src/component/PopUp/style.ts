@@ -33,6 +33,7 @@ export const Title = styled.div`
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 24px;
+    text-align: center;
 `
 export const ButtonWrapper = styled.div``
 

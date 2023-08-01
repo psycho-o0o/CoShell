@@ -42,22 +42,25 @@ export const BigDeviceButtonWrap = styled.div`
         margin-bottom: 15px;
     }
 `
-
 const popUpComponents = [
     {
-        name: "createRoom",
+        name: "addDevices",
+        title: "Add Device",
         component: <AddDevices />,
     },
     {
         name: "selectLocation",
+        title: "Select Location",
         component: <SelectLocation />,
     },
     {
         name: "decideName",
+        title: "Decide Name",
         component: <DecideName />,
     },
     {
         name: "success",
+        title: "Success",
         component: <Success />,
     },
 ]
@@ -96,6 +99,10 @@ export default function DashBoard(): JSX.Element {
         () => popUpIndex === popUpComponents.length - 1,
         [popUpIndex],
     )
+
+    const PopUpTitle = useMemo(() => {
+        if (popUpIndex !== -1) return popUpComponents[popUpIndex].title
+    }, [popUpIndex])
 
     const PopUpContent = useMemo(() => {
         if (popUpIndex === -1) return <></>
@@ -136,6 +143,7 @@ export default function DashBoard(): JSX.Element {
                 {popUpIndex !== -1 && (
                     <PopUp
                         ref={ref}
+                        title={PopUpTitle as string}
                         close={PopUpClose}
                         onClickContinueButton={continuePopUpPage}
                         onClickBackButton={backPopUpPage}

@@ -13,6 +13,7 @@ import { ForwardedRef, forwardRef } from "react"
 
 export interface IPopUpProps {
     close?: boolean
+    title: string
     onClickContinueButton: () => void
     onClickBackButton: () => void
     onClickCloseButton: () => void
@@ -21,6 +22,7 @@ export interface IPopUpProps {
 export default forwardRef(function PopUp(
     {
         close,
+        title,
         onClickContinueButton,
         onClickBackButton,
         onClickCloseButton,
@@ -40,7 +42,7 @@ export default forwardRef(function PopUp(
                             height={24}
                         />
                     </CloseButtonWrap>
-                    <Title>Room Name</Title>
+                    <Title>{title}</Title>
                     {children}
                     <ButtonWrapper>
                         <ButtonWrap>
