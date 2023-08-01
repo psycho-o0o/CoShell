@@ -22,4 +22,6 @@ export const TitleWrap = styled.div`
     align-items: center;
     justify-content: space-between;
 `
-export const PlusButtonWrap = styled.div``
+export const PlusButtonWrap = styled.div`
+    cursor: pointer;
+`
