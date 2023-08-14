@@ -23,10 +23,9 @@ export function generateToken(payload: IPayloadProps) {
         algorithm: "RS256",
         expiresIn: "1h",
     }
-
     return sign(
         payload,
-        { key: privateKey, passphrase: process.env.PASS_PHRASE as string },
+        { key: privateKey, passphrase: "coshell" },
         signInOptions,
     )
 }
