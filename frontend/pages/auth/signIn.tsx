@@ -32,11 +32,7 @@ export interface IInputsProps {
 }
 
 export default function SignIn(): JSX.Element {
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-    } = useForm<IInputsProps>()
+    const { register, handleSubmit } = useForm<IInputsProps>()
     const { error } = useAppSelector((state) => state.user)
     const dispatch = useAppDispatch()
     const onSubmit: SubmitHandler<IInputsProps> = useCallback(
