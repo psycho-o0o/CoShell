@@ -18,25 +18,31 @@ export const Wrap = styled.div<IWrapProps>`
     justify-content: center;
     align-items: center;
     background-color: black;
-    border-radius: 16px;
+    border-radius: 8px;
+    overflow: hidden;
 
     color: white;
 
-    & > div {
+    & > a {
         display: flex;
         flex: 1 0 auto;
         justify-content: center;
         align-items: center;
         padding: 8px 16px;
-        border-radius: 8px;
         font-size: 14px;
-        & > span {
-            display: none;
+        color: white;
+        text-decoration: none;
+        background-color: #2b2b2b;
+
+        & > div {
+            display: flex;
+            & > span {
+                display: none;
+            }
         }
     }
 
-    & > div:nth-child(${(props) => props.currentIndex}) {
-        background-color: #2b2b2b;
+    & > a:nth-child(${(props) => props.currentIndex}) > div {
         & > span {
             display: block;
             margin-left: 4px;
